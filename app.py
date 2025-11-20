@@ -1,23 +1,16 @@
-import streamlit as st
-import random
+import os
+from openai import OpenAI
 
-# 운세 리스트
-fortune_list = [
-    "오늘은 행운의 날이에요!",
-    "힘든 하루가 예상되니 조심하세요.",
-    "새로운 기회가 찾아올 거예요!",
-    "건강을 잘 챙기세요.",
-    "오늘은 편안한 하루가 될 거예요."
-]
+os.environ["OPENAI_API_KEY"] = "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"
+
+import streamlit as st
 
 # 앱 제목
-st.title("오늘의 운세 확인!!")
+st.title("나만의 레시피를 소개합니다")
 
-# 날짜 입력 받기
-user_date = st.date_input("오늘의 날짜를 선택하세요:")
+# 재료 입력 받기
+title = st.text_input("어떤 재료를 가지고 계십니까?")
 
-# 운세 추천 버튼
-if st.button("오늘의 운세 보기"):
-    st.write(f"{user_date}의 운세는:")
-
-    st.success(random.choice(fortune_list))
+# 재료 출력
+if st.button("레시피 생성하기"):
+    st.write(title)
